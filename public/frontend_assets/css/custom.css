@@ -1,0 +1,28 @@
+/*********************************************************************************
+
+	Template Name: Boighor Bookshop Responsive Bootstrap4 Template  
+	Description: Template description
+	Version: 1.0
+	Note: This is custom css. All custom styles (user styles) declare here.
+
+**********************************************************************************/
+
+
+/*@media (min-width:576px){*/
+	
+@media only screen and (max-width: 576px) {
+ .dsm-none
+	{
+		display:none!important
+
+	}
+}
+
+@media only screen and (max-width: 576px) {
+ .logout_btn
+	{
+		
+    left: 260px !important;
+
+	}
+}
