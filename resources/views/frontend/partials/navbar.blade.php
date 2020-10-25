@@ -1,88 +1,16 @@
 <!-- Header -->
-<header id="wn__header" class="oth-page header__area header__absolute sticky__header">
+<header id="_wn__header" class="_oth-page _header__area _header__absolute sticky__header">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 pl-0 pr-0">
+        <div class="row" style="    position: relative;">
+            <div class="col-md-3 pl-0 pr-0">
                 <div class="logo" style="position: relative;">
                     <a href="index.html">
-                        <img src="http://preview.freethemescloud.com/boighor-v3/images/logo/logo.png" alt="logo images" class="w-25">
+                        <img src="http://preview.freethemescloud.com/boighor-v3/images/logo/logo.png" alt="logo images" class="">
                     </a>
-                    <a href="#">
-                        <i class="fa fa-shopping-cart mr-3" style="
-                            position: relative; 
-                            font-size: 19px;
-                            color: #fff;
-                        }">
-                        <span class="text-warning" style="
-                            position: absolute;
-                            top: -7px;
-                            background: #050001;
-                            border-radius: 10px;
-                            padding: 3px;
-                            height: 13px;
-                            width: 13px;
-                            font-size: 10px;
-                            ">4
-                        </span>
-                      </i>
-                    </a>
-
-                    @if (Route::has('login'))
-                        @auth
-                            @if(Auth::user()->role->id == 1)
-                            <a href="{{route('admin.dashboard')}}">
-                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
-                                        font-size: 19px;
-                                        color: #fff;
-                                    }">
-                                    Dashboard
-                                    </i>
-                                </a>
-
-                            @elseif(Auth::user()->role->id == 2)
-
-                            <a href="{{route('author.dashboard')}}">
-                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
-                                        font-size: 19px;
-                                        color: #fff;
-                                    }">
-                                    Dashboard
-                                    </i>
-                                </a>
-                            @endif
-
-                            <form action="{{ route('logout') }}" method="POST" class="logout_btn" style="position: relative;top: -67px;left: 335px;">
-                                @csrf
-                                <button class="fa fa-user-circle-o mr-2 ml-1 btn btn-link text-light border-danger p-1"  type="submit">Logout</button>
-                            </form>
-                        @else
-                            @if (Route::has('register'))
-                                <a href="{{route('authorRegister')}}">
-                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
-                                        font-size: 19px;
-                                        color: #fff;
-                                    }">
-                                    Register
-                                    </i>
-                                </a>
-                            @endif
-                                <a href="{{route('authorLogin')}}">
-                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
-                                        font-size: 19px;
-                                        color: #fff;
-                                    }">
-                                    Login
-                                    </i>
-                                </a>
-                        @endauth
-                    @endif
-
-                    
-
                 </div>
             </div>
-            <div class="col-md-6  pl-0 pr-0 d-flex align-items-center">
-                <div class="input-group" style="top: 15px;">
+            <div class="col-md-5  pl-0 pr-0 d-flex align-items-center">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <select class="form-control w-100 rounded-0">
                             <option>Select</option>
@@ -94,32 +22,95 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-3 d-flex flex-row-reverse  d-flex align-items-center">
+                <span class="mobile_menu">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart mr-2" style="
+                            position: relative; 
+                            font-size: 19px;
+                        }">
+                        <span class="text-warning" style="
+                            position: absolute;
+                            top: -7px;
+                            background: #050001;
+                            border-radius: 10px;
+                            padding: 3px;
+                            height: 13px;
+                            width: 13px;
+                            font-size: 10px;
+                            ">
+                            {{ App\Models\Cart::totalItems() }}
+                        </span>
+                      </i>
+                    </a>
+
+                    @if (Route::has('login'))
+                        @auth
+                            @if(Auth::user()->role->id == 1)
+                            <a href="{{route('admin.dashboard')}}">
+                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
+                                        font-size: 19px;
+                                    }">
+                                    Dashboard
+                                    </i>
+                                </a>
+
+                            @elseif(Auth::user()->role->id == 2)
+
+                            <a href="{{route('author.dashboard')}}">
+                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
+                                        font-size: 19px;
+                                    }">
+                                    Dashboard
+                                    </i>
+                                </a>
+                            @endif
+
+                            <form action="{{ route('logout') }}" method="POST" class="logout_btn" style="position: relative;top: -67px;left: 335px;">
+                                @csrf
+                                <button class="fa fa-user-circle-o mr-2 ml-1 btn btn-link border-danger p-1"  type="submit">Logout</button>
+                            </form>
+                        @else
+                            @if (Route::has('register'))
+                                <a href="{{route('authorRegister')}}" class="text-dark">
+                                    <i class="fa fa-user-circle-o ml-1" style="
+                                        font-size: 19px;
+                                    }">
+                                    Register
+                                    </i>
+                                </a>
+                            @endif
+                                <a href="{{route('authorLogin')}}">
+                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
+                                        font-size: 19px;
+                                    }">
+                                    Login
+                                    </i>
+                                </a>
+                        @endauth
+                    @endif
+                    </span>
+            </div>
         </div>
-        <div class="row pr-2 pl-2 d-flex justify-content-center">
+        <div class="row p-1 d-flex justify-content-center">
             <div class="col-lg-8 d-none d-lg-block">
                 <nav class="mainmenu__nav">
                     <ul class="meninmenu d-flex justify-content-start">
                         <li class=""><a href="/">Home</a> </li>
+                        @foreach( \App\Models\Category::all() as $category )
                         <li class="drop">
-                            <a href="shop-grid.html">Books</a>
+                            <a href="{{ route('category',$category->id) }}">{{ $category->name }}</a>
                             <div class="megamenu mega03">
                                 <ul class="item item03">
-                                    <li class="title">Categories</li>
-                                    <li><a href="shop-grid.html">Biography </a></li>
-                                </ul>
-                                <ul class="item item03">
-                                    <li class="title">Favourite</li>
-                                    <li><a href="shop-grid.html">Mystery</a></li>
-                                </ul>
-                                <ul class="item item03">
-                                    <li class="title">Collections</li>
-                                    <li><a href="shop-grid.html">Science </a></li>
+                                    @foreach( \App\Models\Subcategory::where('category_id',$category->id)->get() as $subcategory )
+                                     <li><a href="{{ route('sub_category', [$category->slug, $subcategory->slug] ) }}">{{ $subcategory->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </li>
-                        <li class="drop">
-                            <a href="blog.html">Blog</a>
-                        </li>
+                         @endforeach
+                        <li><a href="contact.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>

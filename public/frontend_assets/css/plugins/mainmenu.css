@@ -34,7 +34,7 @@ a.meanmenu-reveal {
   top: -4px;
 }
 .is-sticky .mean-container a.meanmenu-reveal span {
-  background: #fff none repeat scroll 0 0;
+  /*background: #fff none repeat scroll 0 0;*/
 }
 .is-sticky .mean-container a.meanmenu-reveal {
   color: #fff;
@@ -75,7 +75,7 @@ a.meanmenu-reveal {
 	background: #ddd none repeat scroll 0 0;
 }
 .mean-container a.meanmenu-reveal span:first-child{
-	margin-top: 0;
+	margin-top: 24;
 }
 
 .mean-container .mean-nav {

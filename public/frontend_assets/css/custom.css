@@ -11,18 +11,15 @@
 /*@media (min-width:576px){*/
 	
 @media only screen and (max-width: 576px) {
- .dsm-none
-	{
+	.dsm-none{
 		display:none!important
-
 	}
-}
-
-@media only screen and (max-width: 576px) {
- .logout_btn
-	{
-		
-    left: 260px !important;
-
+	.mobile_menu{
+		position: absolute;
+		top: -80px;
+		left: 140px;
+	}
+	.logout_btn{
+		left: 260px !important;
 	}
 }

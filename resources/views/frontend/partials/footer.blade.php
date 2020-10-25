@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 text-left">
-                    <img src="https://www.boibazar.com/asset/images/logo_bn.png" alt="boibazar-logo-bn" width="50%"><br>
+                    <img src="http://preview.freethemescloud.com/boighor-v3/images/logo/logo.png" alt="boibazar-logo-bn" width="50%"><br>
                     <ul>
                         <li>
                             <i class="fa fa-headphones"></i> 

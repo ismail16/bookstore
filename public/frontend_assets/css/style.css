@@ -1905,7 +1905,7 @@ Header Styles
   padding-left: 0;
 }
 .oth-page .mainmenu__nav .meninmenu li a {
-  color: #fff;
+  /*color: #fff;*/
 }
 .oth-page.header__area .header__sidebar__right > li.shop_search > a {
   background: rgba(0, 0, 0, 0) url("../images/search_white.png") no-repeat scroll 0 center;
@@ -2122,7 +2122,7 @@ Header Styles
 .sticky__header.is-sticky {
   -webkit-animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
   animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
-  background: rgba(0, 0, 0, 0.9) none repeat scroll 0 0;
+  background: rgb(255 255 255 / 90%) none repeat scroll 0 0;
   box-shadow: 0 0 5px #bdbdbd;
   left: 0;
   position: fixed;
