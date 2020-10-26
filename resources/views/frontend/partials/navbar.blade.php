@@ -14,6 +14,9 @@
                     <div class="input-group-prepend">
                         <select class="form-control w-100 rounded-0">
                             <option>Select</option>
+                            @foreach( \App\Models\Category::all() as $category )
+                                <option value="{{ $category->name }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>    
                     </div>
                     <input type="text" name="title_or_keyword" class="form-control" placeholder="Search for Journal..">
@@ -100,7 +103,7 @@
                         <li class=""><a href="/">Home</a> </li>
                         @foreach( \App\Models\Category::all() as $category )
                         <li class="drop">
-                            <a href="{{ route('category',$category->id) }}">{{ $category->name }}</a>
+                            <a href="{{ route('category',$category->id) }}">{{ $category->name }} <i class=" ml-1 fa fa-angle-down"></i></a>
                             <div class="megamenu mega03">
                                 <ul class="item item03">
                                     @foreach( \App\Models\Subcategory::where('category_id',$category->id)->get() as $subcategory )

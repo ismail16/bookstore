@@ -26,9 +26,7 @@
                         <div class="tab__container">
                             <div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
                                 <div class="row">
-
-                                     @foreach( \App\Models\Product::get() as $product)
-
+                                    @foreach( \App\Models\Product::get() as $product)
                                     <!-- Start Single Product -->
                                     <div class="col-md-2 card">
                                         <div class="product">
@@ -44,7 +42,7 @@
                                                 </div>
                                                 <ul class="prize position__right__bottom d-flex">
                                                     <li>Tk {{ $product->price }}</li>
-                                                    <li class="old_prize">$55.00</li>
+                                                    <li class="old_prize">{{ $product->old_price }}</li>
                                                 </ul>
                                                 <div class="action">
                                                     <div class="actions_inner">

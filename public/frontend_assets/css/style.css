@@ -1887,7 +1887,7 @@ Header Styles
 	}
 		.mainmenu__nav .meninmenu li a:hover{color: #e59285;}
 		.is-sticky .mainmenu__nav .meninmenu li a {
-		  color: #fff;
+		  /*color: #fff;*/
 		}
 		.is-sticky.header__area .header__sidebar__right > li.shop_search > a {
 		  background: rgba(0, 0, 0, 0) url("images/icons/search_white.png") no-repeat scroll 0 center;
@@ -2134,7 +2134,8 @@ Header Styles
 .header__area.sticky__header.is-sticky .header__sidebar__right,
 .header__area.sticky__header.is-sticky .mainmenu__nav,
 .header--two.sticky__header.is-sticky .mainmenu__nav .meninmenu {
-  height: 55px; }
+  /*height: 55px; */
+}
 .header__area.sticky__header.is-sticky .logo {
   height: 40px;
   /*line-height: 55px;*/
@@ -2146,7 +2147,8 @@ Header Styles
 .sticky__bg--black.sticky__header.is-sticky {
   background: rgba(0, 0, 0, 0.9) none repeat scroll 0 0; }
 .sticky__header.is-sticky .mainmenu__nav {
-  height: 55px; }
+  /*height: 55px; */
+}
 .header__area .sticky__header.is-sticky .header__sidebar__right {
   height: 55px;
   list-style: outside none none; }
