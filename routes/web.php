@@ -34,7 +34,8 @@ Auth::routes();
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('category', 'CategoryController');
-    Route::resource('subcategory', 'SubcategoryController');
+    Route::resource('author', 'AuthorController');
+    Route::resource('publisher', 'PublisherController');
     Route::resource('supplier', 'SupplierController');
     Route::resource('product', 'ProductController');
     Route::resource('order', 'OrderController');

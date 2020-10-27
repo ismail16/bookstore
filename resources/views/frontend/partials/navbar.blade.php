@@ -13,10 +13,9 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <select class="form-control w-100 rounded-0">
-                            <option>Select</option>
-                            @foreach( \App\Models\Category::all() as $category )
-                                <option value="{{ $category->name }}">{{ $category->name }}</option>
-                            @endforeach
+                            <option value="বিষয়">বই</option>
+                            <option value="লেখক">লেখক</option>
+                            <option value="প্রকাশনী">প্রকাশনী</option>
                         </select>    
                     </div>
                     <input type="text" name="title_or_keyword" class="form-control" placeholder="Search for Journal..">
@@ -101,18 +100,38 @@
                 <nav class="mainmenu__nav">
                     <ul class="meninmenu d-flex justify-content-start">
                         <li class=""><a href="/">Home</a> </li>
-                        @foreach( \App\Models\Category::all() as $category )
+                        
                         <li class="drop">
-                            <a href="{{ route('category',$category->id) }}">{{ $category->name }} <i class=" ml-1 fa fa-angle-down"></i></a>
+                            <a href="#"> বিষয় <i class=" ml-1 fa fa-angle-down"></i></a>
                             <div class="megamenu mega03">
                                 <ul class="item item03">
-                                    @foreach( \App\Models\Subcategory::where('category_id',$category->id)->get() as $subcategory )
-                                     <li><a href="{{ route('sub_category', [$category->slug, $subcategory->slug] ) }}">{{ $subcategory->name }}</a></li>
+                                    @foreach( \App\Models\Category::all() as $category )
+                                     <li><a href="{{ route('category',$category->id) }}">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
                         </li>
-                         @endforeach
+                        <li class="drop">
+                            <a href="#"> লেখক <i class=" ml-1 fa fa-angle-down"></i></a>
+                            <div class="megamenu mega03">
+                                <ul class="item item03">
+                                    @foreach( \App\Models\Author::all() as $author )
+                                     <li><a href="#">{{ $author->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="drop">
+                            <a href="#"> প্রকাশনী <i class=" ml-1 fa fa-angle-down"></i></a>
+                            <div class="megamenu mega03">
+                                <ul class="item item03">
+                                    @foreach( \App\Models\Publisher::all() as $publisher )
+                                     <li><a href="#">{{ $publisher->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+
                         <li><a href="contact.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>

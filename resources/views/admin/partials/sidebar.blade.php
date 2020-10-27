@@ -39,9 +39,15 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="{{ route('admin.subcategory.index') }}" class="nav-link {{Request::is('admin/subcategory*') ? 'active':''}}">
+                    <a href="{{ route('admin.author.index') }}" class="nav-link {{Request::is('admin/author*') ? 'active':''}}">
                         <i class="nav-icon far fa fa-list-ol"></i>
-                        <p>Sub-Category</p>
+                        <p>Authors</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ route('admin.publisher.index') }}" class="nav-link {{Request::is('admin/publisher*') ? 'active':''}}">
+                        <i class="nav-icon far fa fa-list-ol"></i>
+                        <p>Publishers</p>
                     </a>
                 </li>
                 <li class="nav-item">

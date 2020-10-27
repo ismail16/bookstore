@@ -22,27 +22,29 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <a href="{{route('admin.subcategory.create')}}" class="pull-right btn btn-sm btn-primary float-right ml-2"> <i class="fa fa-plus"></i> Add New</a>
+                            <a href="{{route('admin.publisher.create')}}" class="pull-right btn btn-sm btn-primary float-right ml-2"> <i class="fa fa-plus"></i> Add New</a>
 
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th>#SL</th>
-                                    <th>Sub Category</th>
-                                    <th>Category</th>
+                                    <th>publisher</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($subcategories as $subcategory)
+                                @foreach($publishers as $publisher)
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $subcategory->name }}</td>
-                                    <td>{{ $subcategory->category->name }}</td>
-                                    <td>{{ $subcategory->status }}</td>
+                                    <td>{{ $publisher->name }}</td>
+                                    <td>{{ $publisher->phone }}</td>
+                                    <td>{{ $publisher->email }}</td>
+                                    <td>{{ $publisher->status }}</td>
                                     <td class="text-center">
-                                        <a href="{{route('admin.subcategory.edit', $subcategory->id)}}"
+                                        <a href="{{route('admin.publisher.edit', $publisher->id)}}"
                                            class="btn btn-xs btn-success"><i class="fa fa-edit"></i></a>
 
                                         <a href="#" class="btn btn-xs btn-danger table-action-btn on_delete"
@@ -50,9 +52,9 @@
                                                     class="fa fa-trash"></i></a>
 
                                         <form id="on_delete{{$loop->index+1}}"
-                                              action="{{route('admin.subcategory.destroy', $subcategory->id)}}"
+                                              action="{{route('admin.publisher.destroy', $publisher->id)}}"
                                               method="post" class="delete"
-                                              data-content="{{$subcategory->id}}"
+                                              data-content="{{$publisher->id}}"
                                               style="display: none;">
                                             {{csrf_field()}}
                                             {{method_field('DELETE')}}
