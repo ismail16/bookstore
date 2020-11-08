@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
-use  App\Models\Product;
+use App\Models\Publisher;
+use App\Models\Author;
+use App\Models\Product;
 use App\Models\ProductImage;
-use App\Models\Subcategory;
-use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use File;
@@ -22,26 +22,36 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::orderBy('id', 'desc')->get();
-        $subcategories = Subcategory::orderBy('id', 'desc')->get();
-        $suppliers = Supplier::orderBy('id', 'desc')->get();
-        return view('admin.product.create', compact('categories','subcategories','suppliers'));
+        $publishers = Publisher::orderBy('id', 'desc')->get();
+        $authors = Author::orderBy('id', 'desc')->get();
+        return view('admin.product.create', compact('categories','publishers','authors'));
     }
 
     public function store(Request $request)
     {
         $product = new Product();
         $product->title = $request->title;
-        $product->old_price = $request->old_price;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
+        $product->slug =  str_slug($product->slug);
         $product->category_id = $request->category_id;
-        $product->sub_category_id = $request->sub_category_id;
-        $product->supplier_id = $request->supplier_id;
+        $product->publisher_id = $request->publisher_id;
+        $product->author_id = $request->author_id;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->quantity = $request->quantity;
+        $product->editor = $request->editor;
+        $product->translator = $request->translator;
+        $product->page_no = $request->page_no;
+        $product->edition = $request->edition;
+        $product->publish_date = $request->publish_date;
+        $product->language = $request->language;
         $product->description = $request->description;
-        $product->slug =  str_slug($product->title);
-        $product->author =  'admin';
-        $product->publisher =  'admin';
+        $product->isbn = $request->isbn;
         $product->status =  1;
+
+        return $product;
+
+
+
         $product->save();
 
         if (count($request->image) > 0) {
@@ -81,17 +91,22 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->title = $request->title;
-        $product->old_price = $request->old_price;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
         $product->category_id = $request->category_id;
-        $product->sub_category_id = $request->sub_category_id;
-        $product->supplier_id = $request->supplier_id;
+        $product->publisher_d = $request->publisher_d;
+        $product->author_id = $request->author_id;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->quantity = $request->quantity;
+        $product->editor = $request->editor;
+        $product->translator = $request->translator;
+        $product->page_no = $request->page_no;
+        $product->edition = $request->edition;
+        $product->publish_date = $request->publish_date;
+        $product->language = $request->language;
         $product->description = $request->description;
+        $product->isbn = $request->isbn;
         $product->slug =  str_slug($product->title);
-        $product->author =  'admin';
-        $product->publisher =  'admin';
-        $product->status = $request->status;
+        $product->status =  1;
         $product->save();
 
         $image0 = $request->file('product_image0');
@@ -162,22 +177,6 @@ class ProductController extends Controller
             }
         }
 
-        $image4 = $request->file('product_image4');
-        if ($image4) {
-            if(File::exists('images/product_image/'.$request->product_image44))
-            {
-                File::delete('images/product_image/'.$request->product_image44);
-            }
-            $ext = strtolower($image4->getClientOriginalExtension());
-            $image_full_name = $product->slug.'-image-'. '4' .'.' . $ext;
-            $upload_path = 'images/product_image/';
-            $success = $image4->move($upload_path, $image_full_name);
-            if ($success) {
-                $product_image = ProductImage::find($request->product_id44);
-                $product_image->image = $image_full_name;
-                $product_image->save();
-            }
-        }
         return redirect()->route('admin.product.index')->with('message', 'Product Updated Successfully !');
     }
 

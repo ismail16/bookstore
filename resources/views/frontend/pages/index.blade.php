@@ -68,11 +68,13 @@
                                             <div class="card-footer p-1">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <a href="{{ route('single.producs',$product->slug) }}" class="btn btn-sm btn-outline-primary btn-block m-1"><i class="fa fa-eye"></i> View</a>
+                                                        {{ $product->slug }}
+                                                        <a href="{{ route('single.producs', $product->slug) }}" class="btn btn-sm btn-outline-primary btn-block m-1"><i class="fa fa-eye"></i> View</a>
+                                                        }
                                                     </div>
                                                     <div class="col-md-6 text-right">
                                                         <form class="" action="{{ route('card.store') }}" method="post">
-                                                                    @csrf
+                                                            @csrf
                                                             <input type="hidden" name="product_id" value="{{ $product->id  }}">
                                                             <button class="btn btn-sm btn-outline-primary m-1 btn-block w-100"><i class="fa fa-shopping-cart"></i> ADD</button>
                                                         </form>
@@ -81,10 +83,7 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     @endforeach
-
-
                                 </div>
                             </div>
                         </div>
@@ -92,8 +91,4 @@
                 </div>
             </div>
         </section>
-        <!-- End Shop Page -->
-
-
-
 @endsection

@@ -29,14 +29,20 @@
                             @csrf
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Title</label>
                                             <input type="text" name="title" class="form-control" placeholder="Product Title">
                                         </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Slug</label>
+                                            <input type="text" name="slug" class="form-control" placeholder="slug Title">
+                                        </div>
+                                    </div>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Category</label>
                                             <select name="category_id" id="" class="form-control">
@@ -46,52 +52,88 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Sub Category</label>
-                                            <select name="sub_category_id" id="" class="form-control">
-                                                @foreach($subcategories as $subcategory)
-                                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                            <label>Publisher</label>
+                                            <select name="publisher_id" id="" class="form-control">
+                                                @foreach($publishers as $publisher)
+                                                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Supplier</label>
-                                            <select name="supplier_id" id="" class="form-control">
-                                                @foreach($suppliers as $supplier)
-                                                    <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                            <label>Author</label>
+                                            <select name="author_id" id="" class="form-control">
+                                                @foreach($authors as $author)
+                                                    <option value="{{ $author->id }}">{{ $author->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Old Price</label>
-                                            <input type="number"  name="old_price" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>New Price</label>
+                                            <label>Price</label>
                                             <input type="number" name="price" class="form-control">
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Discount</label>
+                                            <input type="number"  name="discount" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Quantity</label>
                                             <input type="number"  name="quantity" class="form-control">
                                         </div>
                                     </div>
 
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Editor</label>
+                                            <input type="text" name="editor" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Translator</label>
+                                            <input type="number"  name="translator" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Page Number</label>
+                                            <input type="number"  name="page_no" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Edition</label>
+                                            <input type="number"  name="edition" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>publish date</label>
+                                            <input type="date"  name="publish_date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Language</label>
+                                            <input type="text"  name="language" class="form-control">
+                                        </div>
+                                    </div>
+
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Descriptions</label>
-                                            <textarea class="textarea"  name="description" rows="20" placeholder="Product Descriptions" style="width: 100%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                            <textarea class="textarea"  name="description" rows="20" placeholder="Product Descriptions" style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -123,8 +165,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <h5>Image 5</h5>
-                                            <input type="file" name="image[]" class="form-control p-1" id="myFile">
+                                            <h5>ISBN</h5>
+                                            <input type="text" name="isbn" class="form-control p-1" placeholder="ISBN">
                                         </div>
                                     </div>
                                     <div class="col-md-4">

@@ -27,6 +27,8 @@ class PagesController extends Controller
     public function index()
     {
         $products = Product::all();
+
+        return $products;
         $orders = Order::orderBy('id', 'desc')->get();
         $sliders = Slider::orderBy('id', 'desc')->get();
         return view('frontend.pages.index',compact('products','orders','sliders'));
