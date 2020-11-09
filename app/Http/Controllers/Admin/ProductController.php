@@ -50,8 +50,6 @@ class ProductController extends Controller
 
         return $product;
 
-
-
         $product->save();
 
         if (count($request->image) > 0) {
@@ -79,12 +77,12 @@ class ProductController extends Controller
     }
 
     public function edit($id)
-    {
+    { 
         $product = Product::find($id);
         $categories = Category::orderBy('id', 'desc')->get();
-        $subcategories = Subcategory::orderBy('id', 'desc')->get();
-        $suppliers = Supplier::orderBy('id', 'desc')->get();
-        return view('admin.product.edit', compact('product','categories','subcategories','suppliers'));
+        $publishers = Publisher::orderBy('id', 'desc')->get();
+        $authors = Author::orderBy('id', 'desc')->get();
+        return view('admin.product.edit', compact('product','categories','publishers','authors'));
     }
 
     public function update(Request $request, $id)
