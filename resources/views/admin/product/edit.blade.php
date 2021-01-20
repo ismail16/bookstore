@@ -25,8 +25,9 @@
                         <div class="card-header pt-1 pb-1">
                             <a href="{{route('admin.product.index')}}" class="btn btn-sm btn-info float-right"> <i class="fa fa-list"></i> All Category</a>
                         </div>
-                        <form method="POST" action="{{route('admin.product.store')}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{route('admin.product.update', $product->id )}}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body pt-2">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -138,62 +139,97 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group mb-1 row">
-                                    <div class="col-md-4 ">
-                                        <div class="form-group mb-1">
-                                            <h5>Image 1 <span class="text-danger">*</span></h5>
-                                            <input type="file" name="image[]" class="form-control form-control-sm w-100 p-0" id="myFile" required>
-                                        </div>
+                                <div class="form-group row">
+                                <?php
+                                    $product_images = App\Models\ProductImage::where('product_id', $product->id )->get();
+                                    $product_image = $product_images->toArray();
+                                ?>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <h5>Image 1</h5>
+                                        @if(isset($product_image[0]['image']))
+                                            <img src="{{ asset('images/product_image/'.$product_image[0]['image']) }}" alt="" height="70" width="50px">
+                                            <input type="hidden" value="{{ $product_image[0]['id'] }}"  name="product_id00" >
+                                            <input type="hidden" value="{{ $product_image[0]['image'] }}"  name="product_image00" >
+                                        @else
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png" alt="" height="70" width="50px">
+                                        @endif
+                                        <input type="file" class="form-control" name="product_image0" id="product_image" >
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-1">
-                                            <h5>Image 2</h5>
-                                            <input type="file" name="image[]" class="form-control form-control-sm w-100 p-0" id="myFile">
-                                        </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <h5>Image 2</h5>
+                                        @if(isset($product_image[1]['image']))
+                                            <img src="{{ asset('images/product_image/'.$product_image[1]['image']) }}" alt="" width="50px">
+                                            <input type="hidden" value="{{ $product_image[1]['id'] }}"  name="product_id11" >
+                                            <input type="hidden" value="{{ $product_image[1]['image'] }}"  name="product_image11" >
+                                        @else
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png" alt="" height="70" width="50px">
+                                        @endif
+                                        <input type="file" class="form-control" name="product_image1" id="product_image" >
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-1">
-                                            <h5>Image 3</h5>
-                                            <input type="file" name="image[]" class="form-control form-control-sm w-100 p-0" id="myFile">
-                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h5>Image 3</h5>
+                                        @if(isset($product_image[2]['image']))
+                                            <img src="{{ asset('images/product_image/'.$product_image[2]['image']) }}" alt="" width="50px">
+                                            <input type="hidden" value="{{ $product_image[2]['id'] }}"  name="product_id22" >
+                                            <input type="hidden" value="{{ $product_image[2]['image'] }}"  name="product_image22" >
+                                        @else
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png" alt="" height="70" width="50px">
+                                        @endif
+                                        <input type="file" class="form-control" name="product_image2" id="product_image" >
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-1">
-                                            <h5>Image 4</h5>
-                                            <input type="file" name="image[]" class="form-control form-control-sm w-100 p-0" id="myFile">
-                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h5>Image 4</h5>
+                                        @if(isset($product_image[3]['image']))
+                                            <img src="{{ asset('images/product_image/'.$product_image[3]['image']) }}" alt="" width="50px">
+                                            <input type="hidden" value="{{ $product_image[3]['id'] }}"  name="product_id33" >
+                                            <input type="hidden" value="{{ $product_image[3]['image'] }}"  name="product_image33" >
+                                        @else
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png" alt="" height="70" width="50px">
+                                        @endif
+                                        <input type="file" class="form-control" name="product_image3" id="product_image" >
                                     </div>
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                   <div class="col-md-4">
                                         <div class="form-group mb-1">
                                             <h5>ISBN</h5>
                                             <input type="text" name="isbn" value="{{ $product->isbn }}" class="form-control form-control-sm w-100" placeholder="ISBN">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-1">
-                                            <label class="mb-0">Status</label>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                    </div>
+                                    <div class="">
+                                        <div class="form-check-inline ml-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" name="status" value="0" {{ $product->status == 0? 'checked':'' }} class="form-check-input">
+                                                <span class="form-check-label text-danger font-weight-bold" for="deactive">Deactive</span>
+                                            </label>
                                         </div>
-                                        <div class="">
-                                            <div class="form-check-inline ml-3">
-                                                <label class="form-check-label">
-                                                    <input type="radio" name="status" value="0" class="form-check-input">
-                                                    <span class="form-check-label text-danger font-weight-bold" for="deactive">Deactive</span>
-                                                </label>
-                                            </div>
-                                            <div class="form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="radio" name="status" value="1" checked class="form-check-input">
-                                                    <span class="form-check-label text-success font-weight-bold">Active</span>
-                                                </label>
-                                            </div>
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="radio" name="status" value="1" {{ $product->status == 1? 'checked':'' }} class="form-check-input">
+                                                <span class="form-check-label text-success font-weight-bold">Active</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
                             </div>
                             <div class="card-footer">
                                 <a href="{{route('admin.category.index')}}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Cancel</a>
-                                <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-plus"></i> Add</button>
+                                <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-plus"></i> Update</button>
                             </div>
                         </form>
                     </div>

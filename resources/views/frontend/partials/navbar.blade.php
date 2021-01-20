@@ -1,11 +1,11 @@
 <!-- Header -->
 <header id="_wn__header" class="_oth-page _header__area _header__absolute sticky__header">
     <div class="container-fluid">
-        <div class="row" style="    position: relative;">
+        <div class="row">
             <div class="col-md-3 pl-0 pr-0">
                 <div class="logo" style="position: relative;">
-                    <a href="index.html">
-                        <img src="http://preview.freethemescloud.com/boighor-v3/images/logo/logo.png" alt="logo images" class="">
+                    <a href="/">
+                        <img src="https://wafilife-media.s3-ap-southeast-1.amazonaws.com/uploads/2014/12/Logo-Wafi.png?v=1" alt="logo images" class="">
                     </a>
                 </div>
             </div>
@@ -50,6 +50,8 @@
                     @if (Route::has('login'))
                         @auth
                             @if(Auth::user()->role->id == 1)
+
+
                             <a href="{{route('admin.dashboard')}}">
                                     <i class="fa fa-user-circle-o mr-2 ml-1" style="
                                         font-size: 19px;
@@ -69,9 +71,11 @@
                                 </a>
                             @endif
 
-                            <form action="{{ route('logout') }}" method="POST" class="logout_btn" style="position: relative;top: -67px;left: 335px;">
+                            <a href="{{ route('logout') }}" title="Logout" class=""  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fa fa-key" title="Logout"></i> Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
-                                <button class="fa fa-user-circle-o mr-2 ml-1 btn btn-link border-danger p-1"  type="submit">Logout</button>
                             </form>
                         @else
                             @if (Route::has('register'))

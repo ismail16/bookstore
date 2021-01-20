@@ -82,15 +82,19 @@ class ProductController extends Controller
         $categories = Category::orderBy('id', 'desc')->get();
         $publishers = Publisher::orderBy('id', 'desc')->get();
         $authors = Author::orderBy('id', 'desc')->get();
+
+        // return $product;
         return view('admin.product.edit', compact('product','categories','publishers','authors'));
     }
 
     public function update(Request $request, $id)
     {
+
         $product = Product::find($id);
         $product->title = $request->title;
+        $product->slug =  str_slug($request->slug);
         $product->category_id = $request->category_id;
-        $product->publisher_d = $request->publisher_d;
+        $product->publisher_id = $request->publisher_id;
         $product->author_id = $request->author_id;
         $product->price = $request->price;
         $product->discount = $request->discount;
@@ -103,8 +107,8 @@ class ProductController extends Controller
         $product->language = $request->language;
         $product->description = $request->description;
         $product->isbn = $request->isbn;
-        $product->slug =  str_slug($product->title);
         $product->status =  1;
+
         $product->save();
 
         $image0 = $request->file('product_image0');
