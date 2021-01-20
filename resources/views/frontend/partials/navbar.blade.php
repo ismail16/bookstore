@@ -27,6 +27,7 @@
 
             <div class="col-md-3 d-flex flex-row-reverse  d-flex align-items-center">
                 <span class="mobile_menu">
+
                     <a href="#">
                         <i class="fa fa-shopping-cart mr-2" style="
                             position: relative; 
@@ -50,7 +51,6 @@
                     @if (Route::has('login'))
                         @auth
                             @if(Auth::user()->role->id == 1)
-
 
                             <a href="{{route('admin.dashboard')}}">
                                     <i class="fa fa-user-circle-o mr-2 ml-1" style="
