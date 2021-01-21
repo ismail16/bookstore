@@ -48,8 +48,6 @@ class ProductController extends Controller
         $product->isbn = $request->isbn;
         $product->status =  1;
 
-        return $product;
-
         $product->save();
 
         if (count($request->image) > 0) {

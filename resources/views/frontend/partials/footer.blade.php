@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 text-left">
-                    <img src="http://preview.freethemescloud.com/boighor-v3/images/logo/logo.png" alt="boibazar-logo-bn" width="50%"><br>
+                    <img src="{{ asset('images/logo.png')}}" alt="boibazar-logo-bn" width="50%"><br>
                     <ul>
                         <li>
                             <i class="fa fa-headphones"></i> 
-                        16705<span style="font-size:10px;">(Hotline)</span>
+                        +8801686254438<span style="font-size:10px;">(Hotline)</span>
                         </li>
                         <li>
                             <i class="fa fa-phone"></i>
@@ -15,11 +15,11 @@
                         </li>
                         <li>
                              <i class="fa fa-envelope"></i>
-                        info@boibazar.com
+                        contact@picodeit.com
                         </li>
                         <li>
                             <i class="fa fa-address-card"></i>
-                        Level: 14, Sattara Center 30/A VIP Road, Naya Paltan, Dhaka
+                        Level: Kollaynpur, Dhaka-1216
                         </li>
                     </ul>
                 </div>

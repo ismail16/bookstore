@@ -70,7 +70,6 @@
                                                     <div class="col-md-6">
                                                         {{ $product->slug }}
                                                         <a href="{{ route('single.producs', $product->slug) }}" class="btn btn-sm btn-outline-primary btn-block m-1"><i class="fa fa-eye"></i> View</a>
-                                                        }
                                                     </div>
                                                     <div class="col-md-6 text-right">
                                                         <form class="" action="{{ route('card.store') }}" method="post">

@@ -1,11 +1,10 @@
-<!-- Header -->
 <header id="_wn__header" class="_oth-page _header__area _header__absolute sticky__header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 pl-0 pr-0">
+            <div class="col-md-3 pl-0 pr-0" style="z-index: 9999999999">
                 <div class="logo" style="position: relative;">
                     <a href="/">
-                        <img src="https://wafilife-media.s3-ap-southeast-1.amazonaws.com/uploads/2014/12/Logo-Wafi.png?v=1" alt="logo images" class="">
+                        <img src="{{ asset('images/logo.png') }}" alt="logo images" class="p-1">
                     </a>
                 </div>
             </div>
@@ -25,10 +24,10 @@
                 </div>
             </div>
 
-            <div class="col-md-3 d-flex flex-row-reverse  d-flex align-items-center">
+            <div class="col-md-3 d-flex flex-row-reverse  d-flex align-items-center" style="z-index: 9999999999">
                 <span class="mobile_menu">
 
-                    <a href="#">
+                   <a href="#">
                         <i class="fa fa-shopping-cart mr-2" style="
                             position: relative; 
                             font-size: 19px;
@@ -48,30 +47,32 @@
                       </i>
                     </a>
 
-                    @if (Route::has('login'))
+                    <div class="dropdown float-right ml-2">
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                          Account
+                        </button>
+                        <div class="dropdown-menu">
+
+                            @if (Route::has('login'))
                         @auth
                             @if(Auth::user()->role->id == 1)
 
-                            <a href="{{route('admin.dashboard')}}">
-                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
-                                        font-size: 19px;
-                                    }">
+                            <a href="{{route('admin.dashboard')}}" class="dropdown-item">
+                                    <i class="fa fa-user-circle-o">
                                     Dashboard
                                     </i>
                                 </a>
 
                             @elseif(Auth::user()->role->id == 2)
 
-                            <a href="{{route('author.dashboard')}}">
-                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
-                                        font-size: 19px;
-                                    }">
+                            <a href="{{route('author.dashboard')}}" class="dropdown-item">
+                                    <i class="fa fa-user-circle-o">
                                     Dashboard
                                     </i>
                                 </a>
                             @endif
 
-                            <a href="{{ route('logout') }}" title="Logout" class=""  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a href="{{ route('logout') }}" title="Logout" class="dropdown-item text-danger"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fa fa-key" title="Logout"></i> Logout
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -79,24 +80,22 @@
                             </form>
                         @else
                             @if (Route::has('register'))
-                                <a href="{{route('authorRegister')}}" class="text-dark">
-                                    <i class="fa fa-user-circle-o ml-1" style="
-                                        font-size: 19px;
-                                    }">
+                                <a href="{{route('authorRegister')}}" class="text-dark dropdown-item">
+                                    <i class="fa fa-user-circle-o">
                                     Register
                                     </i>
                                 </a>
                             @endif
-                                <a href="{{route('authorLogin')}}">
-                                    <i class="fa fa-user-circle-o mr-2 ml-1" style="
-                                        font-size: 19px;
-                                    }">
+                                <a href="{{route('authorLogin')}}" class="dropdown-item">
+                                    <i class="fa fa-user-circle-o">
                                     Login
                                     </i>
                                 </a>
                         @endauth
                     @endif
-                    </span>
+                        </div>
+                      </div>
+                </span>
             </div>
         </div>
         <div class="row p-1 d-flex justify-content-center">
@@ -136,8 +135,8 @@
                             </div>
                         </li>
 
-                        <li><a href="contact.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{ route('about')}}">About Us</a></li>
+                        <li><a href="{{ route('contact')}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -153,29 +152,39 @@
                         </li>
                         <li><a href="#">Pages</a>
                             <ul>
-                                <li><a href="about.html">About Page</a></li>
-                                <li><a href="portfolio.html">Portfolio</a>
+                                <li><a href="{{ route('about')}}">About Page</a></li>
+
+                                <li><a href="/">বিষয়</a>
                                     <ul>
-                                        <li><a href="portfolio.html">Portfolio</a></li>
-                                        <li><a href="portfolio-three-column.html">Portfolio 3 Column</a></li>
-                                        <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                                        @foreach( \App\Models\Category::all() as $category )
+                                            <li><a href="{{ route('category',$category->id) }}">{{ $category->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
+
+                                <li><a href="/">লেখক</a>
+                                    <ul>
+                                        @foreach( \App\Models\Author::all() as $author )
+                                         <li><a href="#">{{ $author->name }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+
+                                 <li><a href="/">প্রকাশনী</a>
+                                    <ul>
+                                        @foreach( \App\Models\Publisher::all() as $publisher )
+                                         <li><a href="#">{{ $publisher->name }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+
                                 <li><a href="my-account.html">My Account</a></li>
                                 <li><a href="cart.html">Cart Page</a></li>
                             </ul>
                         </li>
-                        <li><a href="shop-grid.html">Shop</a>
-                            <ul>
-                                <li><a href="shop-grid.html">Shop Grid</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.html">Blog</a>
-                            <ul>
-                                <li><a href="blog.html">Blog Page</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contact</a></li>
+
+                        <li><a href="{{ route('about')}}">About us</a></li>
+                        <li><a href="{{ route('contact')}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -187,4 +196,4 @@
         <!-- Mobile Menu -->    
     </div>      
 </header>
-<!-- //Header -->
+<!-- //Header

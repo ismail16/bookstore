@@ -46,7 +46,7 @@
                         </div>
                         <span class="">
                             Not yet register? Register First!  
-                        </span><a href="{{ route('register') }}" class="btn-sm btn-outline-primary"> Register Now</a>
+                        </span><a href="{{ route('register') }}" class="btn-sm btn-primary text-light"> Register Now</a>
                     </div>
                 </div>
             </form>
