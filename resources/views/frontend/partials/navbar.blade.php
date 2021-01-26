@@ -1,7 +1,7 @@
 <header id="_wn__header" class="_oth-page _header__area _header__absolute sticky__header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 pl-0 pr-0" style="z-index: 9999999999">
+            <div class="col-md-3 pl-0 pr-0" _style="z-index: 9999999999">
                 <div class="logo" style="position: relative;">
                     <a href="/">
                         <img src="{{ asset('images/logo.png') }}" alt="logo images" class="p-1">
@@ -26,7 +26,6 @@
 
             <div class="col-md-3 d-flex flex-row-reverse  d-flex align-items-center" style="z-index: 9999999999">
                 <span class="mobile_menu">
-
                    <a href="#">
                         <i class="fa fa-shopping-cart mr-2" style="
                             position: relative; 
@@ -148,38 +147,27 @@
                 <nav class="mobilemenu__nav">
                     <ul class="meninmenu">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="">Home</a>
                         </li>
-                        <li><a href="#">Pages</a>
+                        <li><a href="#">বিষয়</a>
                             <ul>
-                                <li><a href="{{ route('about')}}">About Page</a></li>
-
-                                <li><a href="/">বিষয়</a>
-                                    <ul>
-                                        @foreach( \App\Models\Category::all() as $category )
-                                            <li><a href="{{ route('category',$category->id) }}">{{ $category->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-
-                                <li><a href="/">লেখক</a>
-                                    <ul>
-                                        @foreach( \App\Models\Author::all() as $author )
-                                         <li><a href="#">{{ $author->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-
-                                 <li><a href="/">প্রকাশনী</a>
-                                    <ul>
-                                        @foreach( \App\Models\Publisher::all() as $publisher )
-                                         <li><a href="#">{{ $publisher->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="cart.html">Cart Page</a></li>
+                                @foreach( \App\Models\Category::all() as $category )
+                                    <li><a href="{{ route('category',$category->id) }}">{{ $category->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li><a href="#">লেখক</a>
+                            <ul>
+                                @foreach( \App\Models\Author::all() as $author )
+                                    <li><a href="#">{{ $author->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li><a href="#">প্রকাশনী</a>
+                            <ul>
+                                @foreach( \App\Models\Publisher::all() as $publisher )
+                                    <li><a href="#">{{ $publisher->name }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
 
@@ -196,4 +184,3 @@
         <!-- Mobile Menu -->    
     </div>      
 </header>
-<!-- //Header
