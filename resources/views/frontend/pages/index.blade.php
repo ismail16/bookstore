@@ -2,22 +2,69 @@
 @section('title','Home')
 
 @section('content')
-    <div class="ht__bradcaump__area bg-image--4">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ asset('frontend_assets/images/4.jpg')}}" alt="Los Angeles" style="height: 400px; width: 100%;">
+              <div class="carousel-caption">
+                <h3>Los Angeles</h3>
+                <p>We had such a great time in LA!</p>
+              </div>   
+            </div>
+            <div class="carousel-item">
+              <img src="{{ asset('frontend_assets/images/4.jpg')}}" alt="Chicago" style="height: 400px; width: 100%;">
+              <div class="carousel-caption">
+                <h3>Chicago</h3>
+                <p>Thank you, Chicago!</p>
+              </div>   
+            </div>
+            <div class="carousel-item">
+              <img src="{{ asset('frontend_assets/images/4.jpg')}}" alt="New York" style="height: 400px; width: 100%;">
+              <div class="carousel-caption">
+                <h3>New York</h3>
+                <p>We love the Big Apple!</p>
+              </div>   
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="bradcaump__inner text-center">
-                        <h2 class="bradcaump-title">Shop</h2>
-                        <nav class="bradcaump-content">
-                          <a class="breadcrumb_item" href="index.html">Home</a>
-                          <span class="brd-separetor">/</span>
-                          <span class="breadcrumb_item active">Shop</span>
-                        </nav>
+        <div class="row pt-2">
+                <div class="col-md-3 d-flex align-items-center border p-2 card">
+                    <i class="fa fa-eye pr-2" style="font-size: 50px;"></i>
+                    <div class="">
+                        <p class="font-weight-bold">Order Processed</p>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-3 d-flex align-items-center border p-2 card">
+                    <i class="fa fa-eye pr-2" style="font-size: 50px;"></i>
+                    <div class="">
+                        <p class="font-weight-bold">Order Processed</p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center border p-2 card">
+                    <i class="fa fa-automobile pr-2" style="font-size: 50px;"></i>
+                        <p class="font-weight-bold">Order on way</p>
+                </div>
+                <div class="col-md-3 d-flex align-items-center border p-2 card">
+                    <i class="fa fa-home pr-2" style="font-size: 50px;"></i>
+                    <div class="">
+                        <p class="font-weight-bold">Order Arrived</p>
+                    </div>
+                </div>
         </div>
-    </div>
+        </div>
         
         <section class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
             <div class="container">
