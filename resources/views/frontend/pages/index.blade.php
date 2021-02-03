@@ -2,53 +2,46 @@
 @section('title','Home')
 
 @section('content')
-    <div id="demo" class="carousel slide" data-ride="carousel">
+    <div id="slider-image" class="carousel slide" data-ride="carousel">
           <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
+            @foreach($sliders as $slider)
+            <li data-target="#slider-image" data-slide-to="{{ $loop->index }}" class="active"></li>
+            @endforeach
           </ul>
+
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{{ asset('frontend_assets/images/4.jpg')}}" alt="Los Angeles" style="height: 400px; width: 100%;">
-              <div class="carousel-caption">
-                <h3>Los Angeles</h3>
-                <p>We had such a great time in LA!</p>
+            @foreach($sliders as $slider)
+            <div class="carousel-item {{ $loop->index==0?'active':'' }}">
+              <img src="{{ asset('images/slider_image/'.$slider->image)}}" alt="Los Angeles" style="height: 400px; width: 100%;">
+              <div class="carousel-caption text-{{ $slider->text_position }}">
+                <h3>{{ $slider->title }}</h3>
+                <p>{!! $slider->slider_text !!}</p>
+                <a href="{{ $slider->button_link }}" class="btn btn-sm btn-primary">{{ $slider->button_text }}</a>
               </div>   
             </div>
-            <div class="carousel-item">
-              <img src="{{ asset('frontend_assets/images/4.jpg')}}" alt="Chicago" style="height: 400px; width: 100%;">
-              <div class="carousel-caption">
-                <h3>Chicago</h3>
-                <p>Thank you, Chicago!</p>
-              </div>   
-            </div>
-            <div class="carousel-item">
-              <img src="{{ asset('frontend_assets/images/4.jpg')}}" alt="New York" style="height: 400px; width: 100%;">
-              <div class="carousel-caption">
-                <h3>New York</h3>
-                <p>We love the Big Apple!</p>
-              </div>   
-            </div>
+            @endforeach
           </div>
-          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+
+          <a class="carousel-control-prev" href="#slider-image" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </a>
-          <a class="carousel-control-next" href="#demo" data-slide="next">
+
+          <a class="carousel-control-next" href="#slider-image" data-slide="next">
             <span class="carousel-control-next-icon"></span>
           </a>
+
         </div>
 
         <div class="container">
         <div class="row pt-2">
                 <div class="col-md-3 d-flex align-items-center border p-2 card">
-                    <i class="fa fa-eye pr-2" style="font-size: 50px;"></i>
+                    <i class="fa fa-cart-plus pr-2" style="font-size: 50px;"></i>
                     <div class="">
-                        <p class="font-weight-bold">Order Processed</p>
+                        <p class="font-weight-bold">Order Confirmed</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex align-items-center border p-2 card">
-                    <i class="fa fa-eye pr-2" style="font-size: 50px;"></i>
+                    <i class="fa fa-briefcase pr-2" style="font-size: 50px;"></i>
                     <div class="">
                         <p class="font-weight-bold">Order Processed</p>
                     </div>

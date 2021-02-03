@@ -8,9 +8,9 @@
                         <span><i class="fa fa-angle-right"></i></span>
                         <span> @yield('title')</span>
                     </div>
-                    <div class="breadcrumb_title">
+                    <!-- <div class="breadcrumb_title">
                         <h2>@yield('title')</h2>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

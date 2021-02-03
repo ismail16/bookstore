@@ -8,7 +8,10 @@
 **********************************************************************************/
 
 
-/*@media (min-width:576px){*/
+.logo{
+	position: relative; 
+	text-align: center;
+}
 	
 @media only screen and (max-width: 576px) {
 	.dsm-none{
@@ -22,4 +25,8 @@
 	.logout_btn{
 		left: 260px !important;
 	}
+	.logo{
+		text-align: left !important;
+	}
+
 }

@@ -4,68 +4,20 @@
 @section('content')
     @include('frontend/partials/content_top')
 
-    <div class="about_section_aera">
-        <div class="container about_container">
-            <div class="row no-gutters align-items-center">
-                <div class="col-lg-12 col-md-18 col-sm-22">
-                    @foreach($abouts as $about)
-                        <p>
-                            {!! $about->description !!}
-                        </p>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="counter_up_area mb-10">
-        <div class="container-fluid counter">
-            <div class="row no-gutters">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single_counterup">
-                        <div class="counter_img">
-                            <img src="{{ asset('frontend_assets/assets/img/cart/count.png')}}" alt="">
+    <div class="page-about about_area bg--white section-padding--lg">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-12">
+                        @foreach($abouts as $about)
+                        <div class="_content">
+                            <h2>{{ $about->title}}</h2>
+                            <p class="mt--20 mb--20">
+                                {!! $about->description !!}
+                            </p>
                         </div>
-                        <div class="counter_info">
-                            <h2 class="counter_number">2170</h2>
-                            <p>happy customers</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single_counterup count-two">
-                        <div class="counter_img">
-                            <img src="{{ asset('frontend_assets/assets/img/cart/count2.png')}}" alt="">
-                        </div>
-                        <div class="counter_info">
-                            <h2 class="counter_number">8080</h2>
-                            <p>AWARDS won</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single_counterup">
-                        <div class="counter_img">
-                            <img src="{{ asset('frontend_assets/assets/img/cart/count3.png')}}" alt="">
-                        </div>
-                        <div class="counter_info">
-                            <h2 class="counter_number">2150</h2>
-                            <p>HOURS WORKED</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="single_counterup count-two">
-                        <div class="counter_img">
-                            <img src="{{ asset('frontend_assets/assets/img/cart/cart5.png')}}" alt="">
-                        </div>
-                        <div class="counter_info">
-                            <h2 class="counter_number">2170</h2>
-                            <p>COMPLETE PROJECTS</p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection

@@ -2122,7 +2122,7 @@ Header Styles
 .sticky__header.is-sticky {
   -webkit-animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
   animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
-  background: rgb(255 255 255 / 90%) none repeat scroll 0 0;
+  background: #fff;
   box-shadow: 0 0 5px #bdbdbd;
   left: 0;
   position: fixed;

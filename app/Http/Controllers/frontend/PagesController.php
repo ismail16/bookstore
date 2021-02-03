@@ -7,6 +7,8 @@ use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Author;
+use App\Models\Publisher;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Subscription;
@@ -27,11 +29,27 @@ class PagesController extends Controller
     public function index()
     {
         $products = Product::all();
-
-        // return $products;
         $orders = Order::orderBy('id', 'desc')->get();
-        $sliders = Slider::orderBy('id', 'desc')->get();
+        $sliders = Slider::orderBy('id', 'desc')->where('status',1)->get();
         return view('frontend.pages.index',compact('products','orders','sliders'));
+    }
+
+    public function author()
+    {
+        $authors = Author::orderBy('id', 'desc')->where('status',1)->paginate(10);
+        return view('frontend.pages.authors',compact('authors'));
+    }
+
+    public function categories()
+    {
+        $categories = Category::orderBy('id', 'desc')->where('status',1)->paginate(10);
+        return view('frontend.pages.categories',compact('categories'));
+    }
+
+    public function publisher()
+    {
+        $publishers = Publisher::orderBy('id', 'desc')->where('status',1)->paginate(10);
+        return view('frontend.pages.publishers',compact('publishers'));
     }
 
     public function products()

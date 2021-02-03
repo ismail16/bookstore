@@ -1,14 +1,17 @@
+@php
+    $setting = \App\Models\Setting::orderBy('id', 'desc')->first();
+@endphp
 <header id="_wn__header" class="_oth-page _header__area _header__absolute sticky__header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 pl-0 pr-0" _style="z-index: 9999999999">
-                <div class="logo" style="position: relative;">
+                <div class="logo">
                     <a href="/">
-                        <img src="{{ asset('images/logo.png') }}" alt="logo images" class="p-1">
+                        <img src="{{ asset('images/store_logo/'.$setting->store_logo) }}" alt="logo images" class="p-1">
                     </a>
                 </div>
             </div>
-            <div class="col-md-5  pl-0 pr-0 d-flex align-items-center">
+            <div class="col-md-6  pl-0 pr-0 d-flex align-items-center">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <select class="form-control w-100 rounded-0">
@@ -24,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 d-flex flex-row-reverse  d-flex align-items-center" style="z-index: 9999999999">
+            <div class="col-md-3 d-flex justify-content-center  d-flex align-items-center" style="z-index: 9999999999">
                 <span class="mobile_menu">
                    <a href="#">
                         <i class="fa fa-shopping-cart mr-2" style="

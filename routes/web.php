@@ -9,6 +9,9 @@ Route::resource('registration', 'Author\AuthorRegisterController');
 
 
 Route::get('/', 'frontend\PagesController@index')->name('index');
+Route::get('/author', 'frontend\PagesController@author')->name('author');
+Route::get('/categories', 'frontend\PagesController@categories')->name('categories');
+Route::get('/publisher', 'frontend\PagesController@publisher')->name('publisher');
 Route::get('/products', 'frontend\PagesController@products')->name('products');
 Route::get('/producs/{slug}', 'frontend\PagesController@single_product')->name('single.producs');
 Route::get('/category/{id}', 'frontend\PagesController@category')->name('category');
