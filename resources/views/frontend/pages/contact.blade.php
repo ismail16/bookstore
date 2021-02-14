@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-lg-6 mb-1">
                             <label class="mb-0">Name <span class="text-danger">*</span></label>
-                            <input class="form-control" name="name" placeholder="Name *" type="text" required>
+                            <input class="form-control" name="name" placeholder="Name" type="text" required>
                         </div>
                         <div class="col-lg-6 mb-1">
                              <label class="mb-0">Email <span class="text-danger">*</span></label>
