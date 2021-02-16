@@ -17,14 +17,14 @@
                                 <div class="product">
                                     <div class="product__thumb">
                                         <a class="first__img" href="{{ route('single.producs',$product->slug) }}">
-                                            <img src="{{ asset('images/product_image/'.$product->product_image->first()->image) }}" alt="product image">
+                                            <img class="product_img" src="{{ asset('images/product_image/'.$product->product_image->first()->image) }}" alt="product image">
                                         </a>
-                                        <a class="second__img animation1" href="{{ route('single.producs',$product->slug) }}">
+                                        <!-- <a class="second__img animation1" href="{{ route('single.producs',$product->slug) }}">
                                             <img src="{{ asset('images/product_image/'.$product->product_image->first()->image) }}" alt="product image">
-                                        </a>
-                                        <div class="new__box">
+                                        </a> -->
+                                       <!--  <div class="new__box">
                                             <span class="new-label">Hot</span>
-                                        </div>
+                                        </div> -->
                                         <ul class="prize position__right__bottom d-flex">
                                             <li>Tk {{ $product->price }}</li>
                                             <li class="old_prize">{{ $product->old_price }}</li>
@@ -53,7 +53,6 @@
                                     <div class="card-footer p-1">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                {{ $product->slug }}
                                                 <a href="{{ route('single.producs', $product->slug) }}" class="btn btn-sm btn-outline-primary btn-block m-1"><i class="fa fa-eye"></i> View</a>
                                             </div>
                                             <div class="col-md-6 text-right">
