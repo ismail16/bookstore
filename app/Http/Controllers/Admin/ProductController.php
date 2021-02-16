@@ -31,7 +31,7 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->title = $request->title;
-        $product->slug =  str_slug($product->slug);
+        $product->slug =  str_slug($request->slug);
         $product->category_id = $request->category_id;
         $product->publisher_id = $request->publisher_id;
         $product->author_id = $request->author_id;

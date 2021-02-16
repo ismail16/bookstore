@@ -48,7 +48,7 @@
                                             <label class="mb-0">Category <span class="text-danger">*</span></label>
                                             <select name="category_id" class="form-control form-control-sm w-100">
                                                 @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option  value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected':'' }}>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -58,7 +58,7 @@
                                             <label class="mb-0">Publisher <span class="text-danger">*</span></label>
                                             <select name="publisher_id" id="" class="form-control form-control-sm w-100">
                                                 @foreach($publishers as $publisher)
-                                                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                                                    <option value="{{ $publisher->id }}" {{ $publisher->id == $product->publisher_id ? 'selected':'' }}>{{ $publisher->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -68,7 +68,7 @@
                                             <label class="mb-0">Author <span class="text-danger">*</span></label>
                                             <select name="author_id" id="" class="form-control form-control-sm w-100">
                                                 @foreach($authors as $author)
-                                                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                                    <option value="{{ $author->id }}" {{ $author->id == $product->author_id ? 'selected':'' }}>{{ $author->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
