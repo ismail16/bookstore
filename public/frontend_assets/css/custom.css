@@ -12,6 +12,11 @@
 	position: relative; 
 	text-align: center;
 }
+
+.product_img{
+	height: 200px !important;
+    width: 170px !important;
+}
 	
 @media only screen and (max-width: 576px) {
 	.dsm-none{

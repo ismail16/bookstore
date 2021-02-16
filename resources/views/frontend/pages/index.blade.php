@@ -71,12 +71,13 @@
                                     <div class="col-md-2 card">
                                         <div class="product">
                                             <div class="product__thumb">
-                                                <a class="first__img" href="single-product.html">
-                                                    <img src="{{ asset('images/product_image/'.$product->product_image->first()->image) }}" alt="product image">
+
+                                                <a class="first__img" href="{{ route('single.producs',$product->slug) }}">
+                                                    <img class="product_img" src="{{ asset('images/product_image/'.$product->product_image->first()->image) }}" alt="product image">
                                                 </a>
-                                                <a class="second__img animation1" href="single-product.html">
+                                                <!-- <a class="second__img animation1" href="{{ route('single.producs',$product->slug) }}">
                                                     <img src="{{ asset('images/product_image/'.$product->product_image->first()->image) }}" alt="product image">
-                                                </a>
+                                                </a> -->
                                                 <!-- <div class="new__box"> -->
                                                     <!-- <span class="new-label">Hot</span> -->
                                                 <!-- </div> -->
