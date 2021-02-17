@@ -83,7 +83,7 @@
                                         <p class="order_amount">{{ $totalAmount + 100}} Tk</p>
                                     </div>
                                     <div class="cart_to_checkout">
-                                        <a href="{{ route('checkout.index') }}">Proceed to Checkout</a>
+                                        <a class="btn btn-sm btn-outline-primary" href="{{ route('checkout.index') }}">Proceed to Checkout</a>
                                     </div>
                                 </div>
                             </div>

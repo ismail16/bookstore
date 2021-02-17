@@ -20,7 +20,7 @@
                             <option value="প্রকাশনী">প্রকাশনী</option>
                         </select>    
                     </div>
-                    <input type="text" name="title_or_keyword" class="form-control" placeholder="Search for Journal..">
+                    <input type="text" name="title_or_keyword" class="form-control" placeholder="Search for books">
                     <div class="input-group-append">
                         <input type="submit" value="Search" name="search" class="btn btn-primary rounded-0">
                     </div>
@@ -29,7 +29,7 @@
 
             <div class="col-md-3 d-flex justify-content-center  d-flex align-items-center" style="z-index: 9999999999">
                 <span class="mobile_menu">
-                   <a href="#">
+                   <a href="{{ route('cart.index')}}">
                         <i class="fa fa-shopping-cart mr-2" style="
                             position: relative; 
                             font-size: 19px;
