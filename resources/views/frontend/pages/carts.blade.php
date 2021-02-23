@@ -4,7 +4,14 @@
 @section('content')
     @include('frontend/partials/content_top')
 
+    <style type="text/css">
+        .border_bottom{
+            border-bottom: 1px solid #ededed;
+        }
+    </style>
+
     <div class="shopping_cart_details">
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -14,76 +21,97 @@
                             $totalAmount = 0;
                         @endphp
                         @if(count($cards) > 0)
-                        <div class="cart_page table-responsive">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th class="product_remove">Delete</th>
-                                    <th class="product_name">Product</th>
-                                    <th class="product_thumb">Image</th>
-                                    <th class="product-price">Price</th>
-                                    <th class="product_quantity">Quantity</th>
-                                    <th class="product_total">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                
-                                @foreach($cards as $cart)
-                                    <tr id="update_order">
-                                        <td class="product_remove">
-                                            <button class="btn btn-danger" onclick="delete_cart({{$cart->id}})"><i class="fa fa-trash-o"></i></button>
-                                        </td>
-                                        <td class="product_name"><a href="#">{{ $cart->product->title }}</a></td>
-                                        <td class="product_thumb"><a href="#"><img src="{{ asset('images/product_image/'.$cart->product->product_image->first()->image) }}" height="50" alt=""></a></td>
-                                        <td class="product-price">Tk {{ $cart->product->price }}</td>
-                                        <td class="product_quantity">
-                                            <div class="input-group">
-                                                <input type="number" min="1" name="product_quantity" class="form-control product_quantity_{{$cart->id}}" value="{{ $cart->product_quantity }}"/>
-                                                <button class="btn btn-info btn-md ml-2" onclick="update_product_qnt({{$cart->id}},{{$cart->product_quantity}})"><i class="fa fa-refresh"></i></button>
-                                            </div>
-                                        </td>
-                                        <td class="product_total">Tk {{ $cart->product->price * $cart->product_quantity }} </td>
-                                    </tr>
-                                   @php  $totalAmount += $cart->product->price * $cart->product_quantity @endphp
-                                @endforeach
-                                
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="coupon_code_inner">
-                                    <p>Enter your coupon code if you have one.</p>
-                                    <input placeholder="Coupon code" type="text">
-                                    <button type="submit">Apply coupon</button>
+                        <div class="">
+                            <div class="cart_page">
+                                <div class="table-responsive">
+                                    <table class="table _table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>#</th>
+                                          <th>Delete</th>
+                                          <th width="450">Product</th>
+                                          <th>Image</th>
+                                          <th>Price</th>
+                                          <th>Quantity</th>
+                                          <th>Total</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+
+                                        @foreach($cards as $cart)
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <button class="btn btn-danger" onclick="delete_cart({{$cart->id}})"><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                            <td>
+                                                <a href="#">{{ $cart->product->title }}</a>
+                                            </td>
+                                            <td><a href="#"><img src="{{ asset('images/product_image/'.$cart->product->product_image->first()->image) }}" height="50" alt=""></a></td>
+                                            <td><b>Tk {{ $cart->product->price }}</b></td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <input type="number" min="1" name="product_quantity" class="form-control product_quantity_{{$cart->id}}" value="{{ $cart->product_quantity }}" style="width: 50px;" />
+                                                    <button class="btn btn-info btn-md ml-2" onclick="update_product_qnt({{$cart->id}},{{$cart->product_quantity}})"><i class="fa fa-refresh"></i></button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <b> {{ $cart->product->price * $cart->product_quantity }} Tk</b>
+                                            </td>
+                                        </tr>
+
+                                        @php  $totalAmount += $cart->product->price * $cart->product_quantity @endphp
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row pr-2">
                             <div class="col-lg-6 col-md-6">
-                                <div class="cart_total_amount">
-                                    <div class="cart_subtotal">
-                                        <p class="subtotal">Subtotal</p>
-                                        <p class="cart_amount">{{ $totalAmount }} Tk</p>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <b>Subtotal</b>
                                     </div>
-                                    <div class="flat_rate ">
-                                        <div class="shipping_flat_rate">
-                                            <p class="subtotal">Shipping</p>
-                                            <p class="cart_amount"> 100 Tk</p>
+                                    <div class="col-4 text-center">
+                                        <b>{{ $totalAmount }} Tk</b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 border_bottom">
+                                        <b>Shipping</b>
+                                    </div>
+                                    <div class="col-4 border_bottom text-center">
+                                       <b>100 Tk</b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 border_bottom">
+                                        <b>Discount</b>
+                                    </div>
+                                    <div class="col-4 border_bottom text-center">
+                                        <b>- 100 Tk</b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <b>Total</b>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <b>{{ $totalAmount }} Tk</b>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 mt-2">
+                                    <div class="col-6">
+                                        <div class="coupon_code_inner">
+                                            <input class="form-control-sm" placeholder="Enter Coupon code" type="text">
+                                            <button type="submit" class="btn btn-sm btn-outline-info">Apply coupon</button>
                                         </div>
                                     </div>
-
-                                    <div class="flat_rate ">
-                                        <div class="shipping_flat_rate">
-                                            <p class="subtotal">Discount</p>
-                                            <p class="text-danger">- 100 Tk</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="cart_subtotal order">
-                                        <p class="order_total">Total</p>
-                                        <p class="order_amount">{{ $totalAmount + 100}} Tk</p>
-                                    </div>
-                                    <div class="cart_to_checkout">
-                                        <a class="btn btn-sm btn-outline-primary" href="{{ route('checkout.index') }}">Proceed to Checkout</a>
+                                    <div class="col-6 text-center">
+                                        <a class="btn btn-sm btn-outline-info" href="{{ route('checkout.index') }}">Proceed to Checkout</a>
                                     </div>
                                 </div>
                             </div>
