@@ -1,4 +1,7 @@
 <!-- Navbar -->
+@php
+    $setting = \App\Models\Setting::orderBy('id', 'desc')->first();
+@endphp
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -13,9 +16,9 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
-                <span class="badge badge-danger navbar-badge">3</span>
+                <span class="badge badge-danger navbar-badge">0</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+           <!--  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <a href="#" class="dropdown-item">
                     <div class="media">
                         <img src="{{asset('backend_assets/dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -59,14 +62,14 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-            </div>
+            </div> -->
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+                <span class="badge badge-warning navbar-badge">0</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <!-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span class="dropdown-item dropdown-header">15 Notifications</span>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
@@ -85,19 +88,19 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-            </div>
+            </div> -->
         </li>
         <li class="nav-item dropdown">
             <a href="{{ route('admin.dashboard') }}" class="_dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <img src="{{asset('backend_assets/dist/img/user2-160x160.jpg')}}" class="user-image img-circle" alt="User Image" width="30" style="margin: 5px 20px 0px 10px;">
+                <img src="{{ asset('images/store_logo/'.$setting->store_logo) }}" class="user-image img-circle" alt="User Image" width="30" style="margin: 5px 20px 0px 10px;">
 {{--                <span class="hidden-xs">Alexander Pierce</span>--}}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span class="dropdown-item dropdown-header">
-                     <img src="{{asset('backend_assets/dist/img/user2-160x160.jpg')}}" width="100" class="img-circle" alt="User Image">
+                     <img src="{{ asset('images/store_logo/'.$setting->store_logo) }}" width="100" class="img-circle" alt="User Image">
                     <p>
                         Admin
-                        <small>Member since Nov. 2018</small>
+                        <small>Member since Nov. 2020</small>
                     </p>
                 </span>
                 <div class="dropdown-divider"></div>

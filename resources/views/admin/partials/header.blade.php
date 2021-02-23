@@ -48,3 +48,6 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
+    @php
+        $setting = \App\Models\Setting::orderBy('id', 'desc')->first();
+    @endphp
