@@ -85,29 +85,66 @@ class PagesController extends Controller
     public function search(Request $request)
     {
 
-        $sub_cat_slug = $request->category;
-        $title = $request['query'];
-        $subcategory = Subcategory::where('slug', $sub_cat_slug)->first();
-        if ($subcategory) {
-            $subcategory_id = $subcategory->id;
+        $subject = $request->subject;
+        $keyword = $request['query'];
+
+        if ($subject == 'books') {
+            $products = Product::orderByDesc('id')
+                ->Where('title', 'LIKE', '%' . $keyword . '%')
+                ->Where([
+                    ['status',1]
+                ])
+                ->paginate(5);
+            return view('frontend.pages.search_product',compact('products'));
+
+        }elseif ($subject == 'authors') {
+            $authors = Author::orderByDesc('id')
+                ->Where(function ($query) use ($keyword) {
+                    $query->where('name', 'LIKE', '%' . $keyword . '%')
+                            ->orWhere('address', 'LIKE', '%' . $keyword . '%');
+                    })
+                ->Where([
+                    ['status',1]
+                ])
+                ->paginate(5);
+            $authors->appends ( array (
+                'name' => $keyword
+            ));
+            return view('frontend.pages.search_authors',compact('authors'));
+
+        }elseif ($subject == 'publisher') {
+            $Publishers = Publisher::orderByDesc('id')
+                ->Where(function ($query) use ($keyword) {
+                    $query->where('name', 'LIKE', '%' . $keyword . '%')
+                            ->orWhere('address', 'LIKE', '%' . $keyword . '%');
+                    })
+                ->Where([
+                    ['status',1]
+                ])
+                ->paginate(5);
+            $Publishers->appends ( array (
+                'name' => $keyword
+            ));
+            return view('frontend.pages.search_publisher',compact('Publishers'));
+
         }else{
-            $subcategory_id = '';
+            $products = Product::orderByDesc('id')
+                ->Where(function ($query) use ($keyword) {
+                    $query->where('title', 'LIKE', '%' . $keyword . '%')
+                            ->orWhere('price', 'LIKE', '%' . $keyword . '%');
+                    })
+                ->Where([
+                    ['status',1]
+                ])
+                ->paginate(5);
+
+            $products->appends ( array (
+                'title' => $keyword
+            ));
+            return view('frontend.pages.search_product',compact('products'));
         }
 
-        $products = Product::orderByDesc('id')
-                        ->Where('sub_category_id', 'LIKE', '%' . $subcategory_id . '%')
-                        ->Where(function ($query) use ($title) {
-                            $query->where('title', 'LIKE', '%' . $title . '%')
-                                    ->orWhere('price', 'LIKE', '%' . $title . '%');
-                            })
-                        ->Where([
-                            ['status',1]
-                        ])
-                        ->paginate(5);
-        $products->appends ( array (
-                'title' => $title
-        ));
-        return view('frontend.pages.search_product',compact('products'));
+
     }
 
 

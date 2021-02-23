@@ -2,7 +2,10 @@
     $setting = \App\Models\Setting::orderBy('id', 'desc')->first();
 @endphp
 <header id="_wn__header" class="_oth-page _header__area _header__absolute sticky__header">
+    
     <div class="container-fluid">
+        <form action="{{ route('search') }}">
+                @csrf
         <div class="row">
             <div class="col-md-3 pl-0 pr-0" _style="z-index: 9999999999">
                 <div class="logo">
@@ -11,13 +14,15 @@
                     </a>
                 </div>
             </div>
+                
             <div class="col-md-6  pl-0 pr-0 d-flex align-items-center">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <select class="form-control w-100 rounded-0">
-                            <option value="বিষয়">বই</option>
-                            <option value="লেখক">লেখক</option>
-                            <option value="প্রকাশনী">প্রকাশনী</option>
+                        <select name="subject" class="form-control w-100 rounded-0">
+                            <option value="all">নির্বাচন</option>
+                            <option value="books">বই</option>
+                            <option value="authors">লেখক</option>
+                            <option value="publisher">প্রকাশনী</option>
                         </select>    
                     </div>
                     <input type="text" name="title_or_keyword" class="form-control" placeholder="Search for books">
@@ -26,6 +31,7 @@
                     </div>
                 </div>
             </div>
+                
 
             <div class="col-md-3 d-flex justify-content-center  d-flex align-items-center" style="z-index: 9999999999">
                 <span class="mobile_menu">
@@ -100,6 +106,7 @@
                 </span>
             </div>
         </div>
+        </form>
         <div class="row p-1 d-flex justify-content-center">
             <div class="col-lg-8 d-none d-lg-block">
                 <nav class="mainmenu__nav">
