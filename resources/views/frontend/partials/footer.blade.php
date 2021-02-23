@@ -97,11 +97,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <!-- <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="payment text-right">
                         <img src="images/icons/payment.png" alt="" />
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -112,5 +112,6 @@
     <script src="{{ asset('frontend_assets/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('frontend_assets/js/plugins.js')}}"></script>
     <script src="{{ asset('frontend_assets/js/active.js')}}"></script>
+     @stack('scripts')
 </body>
 </html>

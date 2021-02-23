@@ -14,6 +14,26 @@
 
         <div class="container">
             <div class="row">
+                @if(session()->has('success'))
+                    <div class="col-lg-12 col-xl-12 d-flex justify-content-center session_message">
+                        <div class="alert alert-success text-center pr-3 pl-3 p-1 mb-1">
+                            {{session('success')}}
+                            <button type="button" class="close ml-4" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
+                @if(session()->has('error'))
+                    <div class="col-lg-12 col-xl-12 d-flex justify-content-center session_message">
+                        <div class="alert alert-success text-center pr-3 pl-3 p-1 mb-1">
+                            {{session('error')}}
+                            <button type="button" class="close ml-4" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 <div class="col-12">
                     <div class="table_desc">
                         @php
