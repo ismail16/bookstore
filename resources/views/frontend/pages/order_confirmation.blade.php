@@ -25,7 +25,7 @@
                            </div>
                        </div><br>
                        <div class="d-flex justify-content-center">
-                           <img src="http://lara-ecom54.ismail-hossain.com/public/frontend_assets/images/Handshake.jpeg" style="width:100%; max-width:400px;">
+                           <img src="{{ asset('images/handshake.png')}} " style="width:100%; max-width:400px;">
                        </div>
                    </div>
                </div>

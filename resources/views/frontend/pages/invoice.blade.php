@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+@php
+    $setting = \App\Models\Setting::orderBy('id', 'desc')->first();
+@endphp
 <div class="container" id="printarea">
         <div class="row">
           <div class="col-12">
@@ -21,8 +24,8 @@
                   <div class="row card-header">
                     <div class="col-12">
                     <h4>
-                        <i class="fa fa-globe"></i> AdminLTE, Inc.
-                        <small class="float-right">Date: 2/10/2014</small>
+                        <img src="{{ asset('images/store_logo/'.$setting->store_logo) }}" alt="boibazar-logo-bn">
+                        <small class="float-right">Date: {{ $order->created_at->format('d-m-Y')}}</small>
                     </h4>
                     </div>
                 </div>
@@ -103,9 +106,15 @@
                         <img src="{{ asset('backend_assets/dist/img/credit/paypal2.png') }}" alt="Paypal">
 
                         <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-                            plugg
-                            dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                            <i class="fa fa-headphones"></i> 
+                            {{ $setting->store_phone }}<span style="font-size:10px;">(Hotline)</span> <br>
+
+                            <i class="fa fa-envelope"></i>
+                            {{ $setting->store_email }} <br>
+
+                            <i class="fa fa-address-card"></i>
+                            {{ $setting->store_address }}
+
                         </p>
                     </div>
                     <div class="col-5">
